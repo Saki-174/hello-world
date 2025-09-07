@@ -13,6 +13,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float moveSpeed;//左右移动速度
     [SerializeField] private float jumpSpeed;//跳跃速度    
     private float moveController;//设置unity提供预设方式移动
+    private bool isOnGround;//人物在地面上
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +31,7 @@ public class PlayerMove : MonoBehaviour
     {
         moveController = Input.GetAxisRaw("Horizontal");//水平输入移速
         rb.velocity = new Vector2(moveSpeed * moveController, rb.velocity.y);
-        if (Input.GetKey(KeyCode.Space) )
+        if (Input.GetKey(KeyCode.Space) && isOnGround == true )
         {
             rb.velocity = new Vector2(rb.velocity.x,jumpSpeed);
         }
@@ -48,5 +49,18 @@ public class PlayerMove : MonoBehaviour
             transform.localScale = new Vector2(-1, 1);
         }
     }
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ground"))
+        {
+            isOnGround = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ground"))
+        {
+            isOnGround = false;
+        }
+    }
 }
