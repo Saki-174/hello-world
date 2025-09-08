@@ -1675,7 +1675,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
-  jumpSpeed: 8
+  jumpSpeed_1: 6
+  jumpSpeed_2: 3
+  jumpTimeController: 0.25
+  upPower: 2
+  downPower: 3
 --- !u!70 &1769570542
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
