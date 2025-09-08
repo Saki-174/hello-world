@@ -15,19 +15,21 @@ public class PlayerState : MonoBehaviour
             return instance;
         }
     }
-    enum State
+    public enum State
     {
         idle,
         move,
         jump,
         doubleJump,
         fall,
+        dead
     }
+    public State state;
     // Start is called before the first frame update
     
     void Start()
     {
-        State state = State.idle;
+        state = State.idle;//≥ı ºªØ
     }
 
     // Update is called once per frame

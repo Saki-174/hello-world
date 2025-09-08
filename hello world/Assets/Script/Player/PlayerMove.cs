@@ -39,6 +39,7 @@ public class PlayerMove : MonoBehaviour
     public void Move()
     {
         moveController = Input.GetAxisRaw("Horizontal");//水平输入移速
+        PlayerState.Instance.state = PlayerState.State.move;
         rb.velocity = new Vector2(moveSpeed * moveController, rb.velocity.y);
     }
     //控制玩家的跳跃
@@ -47,6 +48,7 @@ public class PlayerMove : MonoBehaviour
         //按住space
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround == true)
         {
+            PlayerState.Instance.state = PlayerState.State.jump;
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed_1);
             isJumping = true;//正在跳跃
             jumpTime = 0;
@@ -55,11 +57,13 @@ public class PlayerMove : MonoBehaviour
         //松开space
         if (Input.GetKeyUp(KeyCode.Space))
         {
+            PlayerState.Instance.state = PlayerState.State.fall;
             isJumping = false;//跳跃结束 
         }
         //二段跳
         if(doubleJump &&!isOnGround && Input.GetKeyDown(KeyCode.Space))
         {
+            PlayerState.Instance.state = PlayerState.State.doubleJump;
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed_2);
             isJumping = true;//正在跳跃
             jumpTime = 0;
