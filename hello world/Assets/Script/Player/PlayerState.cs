@@ -3,17 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerState : MonoBehaviour
-{
-    public static PlayerState instance {  get; private set; } //单例模式用来确保角色只有一个状态
-    public static PlayerState Instance
-    {
-        get
-        {
-            //确保只有一个实例
-            if(instance == null)
-                instance = new PlayerState();
-            return instance;
-        }
+{    //单例模式用来确保角色只有一个状态
+    public static PlayerState Instance { get; private set; }
+    private void Awake()
+    {       
+        Instance = this;       
     }
     public enum State
     {
