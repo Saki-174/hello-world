@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerIsOnGround : MonoBehaviour
 {
+    //判断角色是否在地面
     public static bool isOnGround;
     // Start is called before the first frame update
     

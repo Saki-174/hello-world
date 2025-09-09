@@ -16,8 +16,10 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float jumpTimeController;//控制跳跃加速最大时间
     [SerializeField] private float upPower;//控制跳跃加速最大时间
     [SerializeField] private float downPower;//控制跳跃加速最大时间
+    [SerializeField] private float wallJumpSpeed;//在墙上跳的速度
+    [SerializeField] private bool wallJumping = false;//在墙上跳的情况
     private float jumpTime;//跳跃加速时间                                             
-    private float moveController;//设置unity提供预设方式移动    
+    private float moveController;//存储设置unity提供的预设方式移动    
     private bool isJumping;//人物是否正在跳跃，用于跳跃重力控制和二段跳
     private bool doubleJump;//二段跳
     
@@ -30,9 +32,13 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if (!wallJumping)
+        {
+            Move();
+        }
         Turn();
         Jump();
+        WallJump();
     }
     //控制玩家的移动函数（AD）
     public void Move()
@@ -40,6 +46,33 @@ public class PlayerMove : MonoBehaviour
         moveController = Input.GetAxisRaw("Horizontal");//水平输入移速
         PlayerState.Instance.state = PlayerState.State.move;
         rb.velocity = new Vector2(moveSpeed * moveController, rb.velocity.y);
+    }
+    //协程控制短暂的玩家不可控制状态
+    IEnumerator WallJumping()
+    {
+        wallJumping = true;
+        yield return new WaitForSeconds(0.15f);//等待0.15秒后可以控制玩家移动（蹬墙跳结束）
+        wallJumping = false;
+    }
+    //控制玩家在墙上的跳跃
+    private void WallJump()
+    {
+        if (PlayerIsOnWall.isOnWall)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.8f);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                //wallJumping = true;//设置为正在蹬墙跳
+                rb.velocity = new Vector2(-wallJumpSpeed * transform.localScale.x, wallJumpSpeed);
+                doubleJump = true;//二段跳成立
+                StartCoroutine(WallJumping());//启动协程
+            }
+        }
+        //if (PlayerIsOnGround.isOnGround)
+        //{
+        //    wallJumping = false;//到地上时蹬墙跳状态结束
+        //}
+        
     }
     //控制玩家的跳跃
     private void Jump()

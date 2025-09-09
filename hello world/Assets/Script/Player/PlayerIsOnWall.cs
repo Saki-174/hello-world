@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerIsOnWall : MonoBehaviour
 {
+    //判断角色是否在墙上
+    public static bool isOnWall;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,19 @@ public class PlayerIsOnWall : MonoBehaviour
     void Update()
     {
         
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Wall"))
+        {
+            isOnWall = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Wall"))
+        {
+            isOnWall = false;
+        }
     }
 }
