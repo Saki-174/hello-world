@@ -1,0 +1,38 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PausePanelManager : MonoBehaviour
+{
+    private bool isPause;//是否暂停
+    public GameObject pausePanel;//暂停界面获取
+    // Update is called once per frame
+    void Update()
+    {
+        Pause();
+    }
+    public void Pause()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(isPause == false)
+            {
+                pausePanel.SetActive(true);
+                Time.timeScale = 0;
+                isPause = true;
+            }
+            else
+            {
+                pausePanel.SetActive(false);
+                Time.timeScale = 1;
+                isPause = false;
+            }
+        }
+        
+    }
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
+}

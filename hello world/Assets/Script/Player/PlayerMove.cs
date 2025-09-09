@@ -57,7 +57,7 @@ public class PlayerMove : MonoBehaviour
     //控制玩家在墙上的跳跃
     private void WallJump()
     {
-        if (PlayerIsOnWall.isOnWall)
+        if (PlayerIsOnWall.isOnWall && ! PlayerIsOnGround.isOnGround)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.8f);
             if (Input.GetKeyDown(KeyCode.Space))
