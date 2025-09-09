@@ -17,8 +17,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float upPower;//控制跳跃加速最大时间
     [SerializeField] private float downPower;//控制跳跃加速最大时间
     private float jumpTime;//跳跃加速时间                                             
-    private float moveController;//设置unity提供预设方式移动
-    private bool isOnGround;//人物是否在地面上，用于跳跃判断
+    private float moveController;//设置unity提供预设方式移动    
     private bool isJumping;//人物是否正在跳跃，用于跳跃重力控制和二段跳
     private bool doubleJump;//二段跳
     
@@ -46,7 +45,7 @@ public class PlayerMove : MonoBehaviour
     private void Jump()
     {
         //按住space
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround == true)
+        if (Input.GetKeyDown(KeyCode.Space) && PlayerIsOnGround.isOnGround == true)
         {
             PlayerState.Instance.state = PlayerState.State.jump;
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed_1);
@@ -61,7 +60,7 @@ public class PlayerMove : MonoBehaviour
             isJumping = false;//跳跃结束 
         }
         //二段跳
-        if(doubleJump &&!isOnGround && Input.GetKeyDown(KeyCode.Space))
+        if(doubleJump &&!PlayerIsOnGround.isOnGround && Input.GetKeyDown(KeyCode.Space))
         {
             PlayerState.Instance.state = PlayerState.State.doubleJump;
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed_2);
@@ -98,18 +97,5 @@ public class PlayerMove : MonoBehaviour
             transform.localScale = new Vector2(-1, 1);
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Ground"))
-        {
-            isOnGround = true;
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Ground"))
-        {
-            isOnGround = false;
-        }
-    }
+    
 }
