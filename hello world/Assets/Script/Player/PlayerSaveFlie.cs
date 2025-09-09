@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerSaveFlie : MonoBehaviour
 {
-    public Vector2 trans;//检查点
+    public static Vector2 trans;//检查点
     // Start is called before the first frame update
     void Start()
     {

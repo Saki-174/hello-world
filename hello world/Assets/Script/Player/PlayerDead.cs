@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerDead : MonoBehaviour
-{
-    public PlayerSaveFlie playerSaveFlie;//获取存档点
+{    
     private Rigidbody2D rb;//获取刚体组件，用于控制物体状态
     // Start is called before the first frame update
     void Start()
@@ -36,7 +35,7 @@ public class PlayerDead : MonoBehaviour
     //玩家的复活函数
     public void Revive()
     {
-        gameObject.transform.position = playerSaveFlie.trans;
+        gameObject.transform.position = PlayerSaveFlie.trans;
         PlayerState.Instance.state = PlayerState.State.idle;//状态切换
         rb.bodyType = RigidbodyType2D.Dynamic;//把角色转换为动态
 
