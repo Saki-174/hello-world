@@ -38,7 +38,7 @@ public class End : MonoBehaviour
     }
     public void Next()
     {
-        index = SceneManager.GetActiveScene().buildIndex;//获取当前场景序号
+        index = SceneManager.GetActiveScene().buildIndex;//获取当前场景序号       
         SceneManager.LoadScene(index + 1);
         Time.timeScale = 1f;
         isVectory = false;

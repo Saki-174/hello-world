@@ -9,16 +9,5 @@ public class PlayerSaveFlie : MonoBehaviour
     void Start()
     {
         trans = transform.position;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    //¸üÐÂ´æµµµã
-    public void UpdeteTrans()
-    {
-
-    }
+    }    
 }

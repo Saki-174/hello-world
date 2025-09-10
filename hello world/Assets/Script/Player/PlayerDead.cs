@@ -11,11 +11,6 @@ public class PlayerDead : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     //Åöµ½ÏÝÚå
     private void OnTriggerEnter2D(Collider2D collision)
     {

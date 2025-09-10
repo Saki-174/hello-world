@@ -22,30 +22,40 @@ public class PlayerMove : MonoBehaviour
     private float moveController;//存储设置unity提供的预设方式移动    
     private bool isJumping;//人物是否正在跳跃，用于跳跃重力控制和二段跳
     private bool doubleJump;//二段跳
-    
+    private PlayerDash dash;//获取喷气脚本
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        dash = GetComponent<PlayerDash>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!wallJumping)
+        if (dash.isDashing)
         {
-            Move();
+            return;//喷气的时候啥也干不了
         }
-        Turn();
-        Jump();
-        WallJump();
+        else
+        {
+            if (!wallJumping)
+            {
+                Move();
+            }
+            Turn();
+            Jump();
+            WallJump();
+        }
+        IsDashing();
+        
     }
     //控制玩家的移动函数（AD）
     public void Move()
     {
         moveController = Input.GetAxisRaw("Horizontal");//水平输入移速
         PlayerState.Instance.state = PlayerState.State.move;
-        rb.velocity = new Vector2(moveSpeed * moveController, rb.velocity.y);
+        rb.velocity = new Vector2(moveSpeed * moveController, rb.velocity.y);        
     }
     //协程控制短暂的玩家不可控制状态
     IEnumerator WallJumping()
@@ -72,6 +82,14 @@ public class PlayerMove : MonoBehaviour
         //{
         //    wallJumping = false;//到地上时蹬墙跳状态结束
         //}
+        
+    }
+    private void IsDashing()//冲刺
+    {
+        if(dash.canDash && Input.GetKeyDown(KeyCode.LeftShift))//按下左shift冲刺
+        {
+            dash.StartCoroutine(dash.Dash());
+        }
         
     }
     //控制玩家的跳跃
