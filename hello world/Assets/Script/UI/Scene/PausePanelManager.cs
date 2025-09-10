@@ -13,8 +13,9 @@ public class PausePanelManager : MonoBehaviour
     }
     public void Pause()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)&& !End.isVectory)
         {
+            //按下Escape而且没有胜利结算
             if(isPause == false)
             {
                 pausePanel.SetActive(true);

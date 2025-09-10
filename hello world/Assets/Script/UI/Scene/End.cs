@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class End : MonoBehaviour
 {
+    public static bool isVectory;//胜利
     public GameObject victoryPanel;//胜利结算动画
     private Animator animator;//获取动画组件
     private int index;//当前场景序号
@@ -21,6 +22,7 @@ public class End : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             animator.SetBool("Victory", true);
+            isVectory = true;
             StartCoroutine(Good());//使用协程，胜利后一秒呼出胜利面板
         }   
     }
@@ -38,5 +40,7 @@ public class End : MonoBehaviour
     {
         index = SceneManager.GetActiveScene().buildIndex;//获取当前场景序号
         SceneManager.LoadScene(index + 1);
+        Time.timeScale = 1f;
+        isVectory = false;
     }
 }
