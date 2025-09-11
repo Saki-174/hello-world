@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 2999722202975212141}
   - component: {fileID: 6065123439247399466}
   - component: {fileID: 5182778890831265881}
+  - component: {fileID: -1049918904713762228}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -473,5 +474,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canDash: 1
   isDashing: 0
-  trailRenderer: {fileID: 6065123439247399466}
-  rb: {fileID: 1738689218533961516}
+--- !u!114 &-1049918904713762228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4291681732633577621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b079bd727465234e99873cc20e209a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bomb: {fileID: 0}
+  bombTime: 0
+  bombCooldown: 5

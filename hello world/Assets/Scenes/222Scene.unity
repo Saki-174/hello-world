@@ -440,6 +440,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7033171088916372328, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1869267215}
+    - target: {fileID: 7033171088916372328, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Next
+      objectReference: {fileID: 0}
     - target: {fileID: 8505688165551222831, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
       propertyPath: m_Name
       value: VictoryPanel
@@ -14206,6 +14214,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4742755199277697119, guid: d31edc1cb120b2e4b8cb511dc8ada1a4, type: 3}
   m_PrefabInstance: {fileID: 1660106672}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1869267215 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7481583393074324723, guid: 88a4dae43c8ef3d42ba490fd822cb8b8, type: 3}
+  m_PrefabInstance: {fileID: 11161581}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e25ee6be724d24b87c00f26623eb55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1872680653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14716,8 +14735,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canDash: 1
   isDashing: 0
-  trailRenderer: {fileID: 6065123439816853448}
-  rb: {fileID: 1738689217964667598}
 --- !u!114 &5385289430949341286
 MonoBehaviour:
   m_ObjectHideFlags: 0
