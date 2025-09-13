@@ -8,6 +8,7 @@ TagManager:
   - Trap
   - Wall
   - Fruit
+  - Destoryed
   layers:
   - Default
   - TransparentFX

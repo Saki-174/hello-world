@@ -13,9 +13,12 @@ public class PlayerDash : MonoBehaviour
     private int sceneIndex;//当前场景序号
     private TrailRenderer trailRenderer;//获取物体的轨迹模拟器
     private Rigidbody2D rb;//获取刚体组件
+    private AudioSource audioSource;
+    public AudioClip clip;
     
     private void Update()
     {   
+        audioSource = GetComponent<AudioSource>();
         //检查两个组件是否被正常获取
         if(trailRenderer == null)
         {
@@ -41,6 +44,8 @@ public class PlayerDash : MonoBehaviour
         float originalGravity = rb.gravityScale;//预先存储人物初始重力
         rb.gravityScale = 0f;//冲刺时不受重力影响
         rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);//冲刺
+        audioSource.clip = clip;//喷气音乐
+        audioSource.Play();
         trailRenderer.emitting = true;
         yield return new WaitForSeconds(dashingTime);
         trailRenderer.emitting = false;

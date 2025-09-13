@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerState : MonoBehaviour
-{    //单例模式用来确保角色只有一个状态
+{
+    private AudioSource audioSource;
+    public List<AudioClip> audioClips = new List<AudioClip>();//音乐列表
+    //单例模式用来确保角色只有一个状态
     public static PlayerState Instance { get; private set; }
     private void Awake()
     {       

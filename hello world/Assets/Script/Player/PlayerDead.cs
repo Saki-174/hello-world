@@ -23,16 +23,13 @@ public class PlayerDead : MonoBehaviour
     }
     //玩家的死亡函数
     public void Dead()
-    {
-        PlayerState.Instance.state = PlayerState.State.dead;//状态切换
+    {        
         rb.bodyType = RigidbodyType2D.Static;//把角色转换为静态
     }
     //玩家的复活函数
     public void Revive()
     {
-        gameObject.transform.position = PlayerSaveFlie.trans;
-        PlayerState.Instance.state = PlayerState.State.idle;//状态切换
+        gameObject.transform.position = PlayerSaveFlie.trans;       
         rb.bodyType = RigidbodyType2D.Dynamic;//把角色转换为动态
-
     }
 }

@@ -8,9 +8,17 @@ public class PlayerBomb : MonoBehaviour
     public GameObject bomb;
     private float bombTime = 0;//¼ÆÊ±Æ÷
     private float bombCooldown = 5f;//ÀäÈ´
+    public GameObject playerThrowPoint;
+    private AudioSource playerThrowSound;
+    public AudioClip playerThrowSoundClip;
 
+    private void Start()
+    {
+        playerThrowSound = GetComponent<AudioSource>();       
+    }
     private void Update()
     {
+
         bombTime -= Time.deltaTime;
         if (bombTime <= 0)
         {
@@ -22,8 +30,10 @@ public class PlayerBomb : MonoBehaviour
     {
         //°´ÏÂG¼ü¶ªÕ¨µ¯
         if (Input.GetKeyDown(KeyCode.G))
-        {            
-            Instantiate(bomb,transform.position,Quaternion.identity);
+        {
+            playerThrowSound.clip = playerThrowSoundClip;
+            playerThrowSound.Play();
+            Instantiate(bomb,playerThrowPoint.transform.position, Quaternion.identity);
             bombTime = bombCooldown;
         }
     }

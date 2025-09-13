@@ -23,6 +23,8 @@ public class PlayerMove : MonoBehaviour
     private bool isJumping;//人物是否正在跳跃，用于跳跃重力控制和二段跳
     private bool doubleJump;//二段跳
     private PlayerDash dash;//获取喷气脚本
+    private AudioSource audioSource;
+    public List<AudioClip> audioClips = new List<AudioClip>();//音乐列表
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +56,7 @@ public class PlayerMove : MonoBehaviour
     public void Move()
     {
         moveController = Input.GetAxisRaw("Horizontal");//水平输入移速
-        PlayerState.Instance.state = PlayerState.State.move;
+        
         rb.velocity = new Vector2(moveSpeed * moveController, rb.velocity.y);        
     }
     //协程控制短暂的玩家不可控制状态
@@ -75,6 +77,7 @@ public class PlayerMove : MonoBehaviour
                 //wallJumping = true;//设置为正在蹬墙跳
                 rb.velocity = new Vector2(-wallJumpSpeed * transform.localScale.x, wallJumpSpeed);
                 doubleJump = true;//二段跳成立
+                
                 StartCoroutine(WallJumping());//启动协程
             }
         }
@@ -98,7 +101,7 @@ public class PlayerMove : MonoBehaviour
         //按住space
         if (Input.GetKeyDown(KeyCode.Space) && PlayerIsOnGround.isOnGround == true)
         {
-            PlayerState.Instance.state = PlayerState.State.jump;
+            
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed_1);
             isJumping = true;//正在跳跃
             jumpTime = 0;
@@ -107,13 +110,13 @@ public class PlayerMove : MonoBehaviour
         //松开space
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            PlayerState.Instance.state = PlayerState.State.fall;
+           
             isJumping = false;//跳跃结束 
         }
         //二段跳
         if(doubleJump &&!PlayerIsOnGround.isOnGround && Input.GetKeyDown(KeyCode.Space))
         {
-            PlayerState.Instance.state = PlayerState.State.doubleJump;
+            
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed_2);
             isJumping = true;//正在跳跃
             jumpTime = 0;
