@@ -3086,7 +3086,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.82, y: -0.15, z: -10}
+  m_LocalPosition: {x: -6.7, y: 0.32, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10023,7 +10023,7 @@ Transform:
   m_GameObject: {fileID: 975120242}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.82, y: -0.15, z: -10}
+  m_LocalPosition: {x: -6.7, y: 0.32, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10785,11 +10785,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 379945536395596969, guid: f7c55c7cb700a7b468acf8ac1b36b7c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.82
+      value: -6.7
       objectReference: {fileID: 0}
     - target: {fileID: 379945536395596969, guid: f7c55c7cb700a7b468acf8ac1b36b7c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.15
+      value: 0.32
       objectReference: {fileID: 0}
     - target: {fileID: 379945536395596969, guid: f7c55c7cb700a7b468acf8ac1b36b7c4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11289,11 +11289,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: VictoryPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 8505688165551222831, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
+--- !u!1 &6329048677701615403 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3430041151653336427, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
+  m_PrefabInstance: {fileID: 6329048677701615402}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6329048677701615404 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7092840653922557161, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
+  m_PrefabInstance: {fileID: 6329048677701615402}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6329048677701615405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5392645802835428112, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
+  m_PrefabInstance: {fileID: 6329048677701615402}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7334295784636913354
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11347,13 +11366,37 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7481583393074324723, guid: 88a4dae43c8ef3d42ba490fd822cb8b8, type: 3}
+      propertyPath: s
+      value: 
+      objectReference: {fileID: 7734969326940102356}
+    - target: {fileID: 7481583393074324723, guid: 88a4dae43c8ef3d42ba490fd822cb8b8, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 2089483407}
     - target: {fileID: 7481583393074324723, guid: 88a4dae43c8ef3d42ba490fd822cb8b8, type: 3}
+      propertyPath: fullScore
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7481583393074324723, guid: 88a4dae43c8ef3d42ba490fd822cb8b8, type: 3}
       propertyPath: victoryPanel
       value: 
       objectReference: {fileID: 2070981678}
+    - target: {fileID: 7481583393074324723, guid: 88a4dae43c8ef3d42ba490fd822cb8b8, type: 3}
+      propertyPath: gameObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7481583393074324723, guid: 88a4dae43c8ef3d42ba490fd822cb8b8, type: 3}
+      propertyPath: gameObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 6329048677701615405}
+    - target: {fileID: 7481583393074324723, guid: 88a4dae43c8ef3d42ba490fd822cb8b8, type: 3}
+      propertyPath: gameObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 6329048677701615404}
+    - target: {fileID: 7481583393074324723, guid: 88a4dae43c8ef3d42ba490fd822cb8b8, type: 3}
+      propertyPath: gameObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 6329048677701615403}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

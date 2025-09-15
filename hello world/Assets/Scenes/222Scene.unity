@@ -175,13 +175,37 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7481583393074324723, guid: 88a4dae43c8ef3d42ba490fd822cb8b8, type: 3}
+      propertyPath: s
+      value: 
+      objectReference: {fileID: 1660106674}
+    - target: {fileID: 7481583393074324723, guid: 88a4dae43c8ef3d42ba490fd822cb8b8, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1435849126}
     - target: {fileID: 7481583393074324723, guid: 88a4dae43c8ef3d42ba490fd822cb8b8, type: 3}
+      propertyPath: fullScore
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7481583393074324723, guid: 88a4dae43c8ef3d42ba490fd822cb8b8, type: 3}
       propertyPath: victoryPanel
       value: 
       objectReference: {fileID: 1178593869}
+    - target: {fileID: 7481583393074324723, guid: 88a4dae43c8ef3d42ba490fd822cb8b8, type: 3}
+      propertyPath: gameObjects.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7481583393074324723, guid: 88a4dae43c8ef3d42ba490fd822cb8b8, type: 3}
+      propertyPath: gameObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 223947021}
+    - target: {fileID: 7481583393074324723, guid: 88a4dae43c8ef3d42ba490fd822cb8b8, type: 3}
+      propertyPath: gameObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 223947020}
+    - target: {fileID: 7481583393074324723, guid: 88a4dae43c8ef3d42ba490fd822cb8b8, type: 3}
+      propertyPath: gameObjects.Array.data[2]
+      value: 
+      objectReference: {fileID: 223947019}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -464,6 +488,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VictoryPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 8505688165551222831, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -472,6 +500,21 @@ PrefabInstance:
 --- !u!224 &223947018 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3505393752169571866, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
+  m_PrefabInstance: {fileID: 223947017}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &223947019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3430041151653336427, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
+  m_PrefabInstance: {fileID: 223947017}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &223947020 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7092840653922557161, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
+  m_PrefabInstance: {fileID: 223947017}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &223947021 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5392645802835428112, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
   m_PrefabInstance: {fileID: 223947017}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &245095724
