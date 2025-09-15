@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Fruit : MonoBehaviour
 {
-    private bool beDestoryed;
+    public Score s;
+    private bool beDestoryed = false;
     //碰到吃掉他加一分
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,8 +14,8 @@ public class Fruit : MonoBehaviour
             if (beDestoryed) { return; }
             Destroy(gameObject);     
             //摧毁物体后再加一分
-            Score.score += 1;
-            beDestoryed = true;
+            s.score += 1;
+            beDestoryed = true;           
         }
     }
 }
