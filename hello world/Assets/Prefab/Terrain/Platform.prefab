@@ -103,6 +103,7 @@ MonoBehaviour:
   posa: {fileID: 5382349942784431105}
   posb: {fileID: 3443155471873224908}
   moveSpeed: 2
+  isGround: {fileID: 0}
 --- !u!61 &4664044696889866574
 BoxCollider2D:
   m_ObjectHideFlags: 0

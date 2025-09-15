@@ -8,6 +8,7 @@ public class Platform : MonoBehaviour
     public Transform posb;//移动点
     public float moveSpeed;//平台移动速度
     private Transform movePos;//临时变量
+    public Transform player;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +39,7 @@ public class Platform : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
-        {
+        {   
             collision.transform.parent = this.transform;
         }
     }
@@ -46,7 +47,7 @@ public class Platform : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.transform.parent = null;
+            collision.transform.parent = null;         
         }
     }
 }

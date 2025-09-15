@@ -27,9 +27,11 @@ public class PlayerMove : MonoBehaviour
     private AudioSource audioSource;
     public List<AudioClip> audioClips = new List<AudioClip>();//音乐列表
     private Animator animator;//动画
+    public static bool isOnGround;//判断角色是否在地面
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         dash = GetComponent<PlayerDash>();
@@ -61,12 +63,18 @@ public class PlayerMove : MonoBehaviour
         moveController = Input.GetAxisRaw("Horizontal");//水平输入移速
         if (moveController != 0f)
         {
-            animator.SetBool("IsWalk", true);
+            animator.SetBool("IsWalk", true);             
+            if(!audioSource.isPlaying)
+            {
+                audioSource.clip = audioClips[0];
+                audioSource.Play();//播放跑步音效
+            }
         }
         else 
         {
-            animator.SetBool("IsWalk", false);
+            animator.SetBool("IsWalk", false);           
         }
+       
         rb.velocity = new Vector2(moveSpeed * moveController, rb.velocity.y);        
     }
     //协程控制短暂的玩家不可控制状态
@@ -79,7 +87,7 @@ public class PlayerMove : MonoBehaviour
     //控制玩家在墙上的跳跃
     private void WallJump()
     {
-        if (PlayerIsOnWall.isOnWall && ! PlayerIsOnGround.isOnGround)
+        if (PlayerIsOnWall.isOnWall && ! isOnGround)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.8f);
             if (Input.GetKeyDown(KeyCode.Space))
@@ -109,9 +117,10 @@ public class PlayerMove : MonoBehaviour
     private void Jump()
     {
         //按住space
-        if (Input.GetKeyDown(KeyCode.Space) && PlayerIsOnGround.isOnGround == true)
+        if (Input.GetKeyDown(KeyCode.Space) && isOnGround == true)
         {
-            
+            audioSource.clip = audioClips[1];
+            audioSource.Play();
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed_1);
             isJumping = true;//正在跳跃
             jumpTime = 0;
@@ -121,18 +130,20 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {           
             isJumping = false;//跳跃结束 
-            if (PlayerIsOnGround.isOnGround)
+            if (isOnGround)
             {
                 doubleJump = false;//落地时取消可二段跳状
             }
         }
-        if (PlayerIsOnGround.isOnGround)
+        if (isOnGround)
         {
             airJump = true;
         }
         //空跳
-        if (airJump && Input.GetKeyDown(KeyCode.Space) && !PlayerIsOnGround.isOnGround)
+        if (airJump && Input.GetKeyDown(KeyCode.Space) && !isOnGround)
         {
+            audioSource.clip = audioClips[2];
+            audioSource.Play();
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed_2);
             isJumping = true;//正在跳跃
             jumpTime = 0;
@@ -140,9 +151,10 @@ public class PlayerMove : MonoBehaviour
             airJump = false;
         }
         //二段跳
-        if (doubleJump &&!PlayerIsOnGround.isOnGround && Input.GetKeyDown(KeyCode.Space))
+        if (doubleJump &&!isOnGround && Input.GetKeyDown(KeyCode.Space))
         {
-            
+            audioSource.clip = audioClips[2];
+            audioSource.Play();
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed_2);
             isJumping = true;//正在跳跃
             jumpTime = 0;
@@ -181,5 +193,18 @@ public class PlayerMove : MonoBehaviour
             transform.localScale = new Vector2(1, 1);
         }
     }
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ground") || collision.CompareTag("Destoryed"))
+        {
+            isOnGround = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ground") || collision.CompareTag("Destoryed"))
+        {
+            isOnGround = false;
+        }
+    }
 }

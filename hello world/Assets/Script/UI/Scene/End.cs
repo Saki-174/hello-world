@@ -10,10 +10,12 @@ public class End : MonoBehaviour
     private Animator animator;//获取动画组件
     private int index;//当前场景序号
     public GameObject player;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,11 +37,13 @@ public class End : MonoBehaviour
     }
     public void Victory()
     {
+        audioSource.Play();
         victoryPanel.SetActive(true);
         Time.timeScale = 0f;
     }
     public void Next()
     {
+        audioSource.Stop();
         index = SceneManager.GetActiveScene().buildIndex;//获取当前场景序号       
         SceneManager.LoadScene(index + 1);
         Time.timeScale = 1f;
