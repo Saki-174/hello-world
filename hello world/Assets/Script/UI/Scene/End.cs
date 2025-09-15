@@ -9,6 +9,7 @@ public class End : MonoBehaviour
     public GameObject victoryPanel;//胜利结算动画
     private Animator animator;//获取动画组件
     private int index;//当前场景序号
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,13 +23,14 @@ public class End : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             animator.SetBool("Victory", true);
+            player.GetComponent<Animator>().SetBool("IsVictory", true);
             isVectory = true;
             StartCoroutine(Good());//使用协程，胜利后一秒呼出胜利面板
         }   
     }
     IEnumerator Good()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         Victory();
     }
     public void Victory()

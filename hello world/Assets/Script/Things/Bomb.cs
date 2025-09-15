@@ -23,7 +23,7 @@ public class Bomb : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         player = GameObject.Find("Player").GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(player.localScale.x * startSpeed_x, startSpeed_y);  
+        rb.velocity = new Vector2(-player.localScale.x * startSpeed_x, startSpeed_y);  
         audioSource.Play();
         
     }

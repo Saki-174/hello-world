@@ -43,7 +43,7 @@ public class PlayerDash : MonoBehaviour
         isDashing = true;
         float originalGravity = rb.gravityScale;//预先存储人物初始重力
         rb.gravityScale = 0f;//冲刺时不受重力影响
-        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);//冲刺
+        rb.velocity = new Vector2(-transform.localScale.x * dashingPower, 0f);//冲刺
         audioSource.clip = clip;//喷气音乐
         audioSource.Play();
         trailRenderer.emitting = true;

@@ -9,6 +9,8 @@ TagManager:
   - Wall
   - Fruit
   - Destoryed
+  - Bomb
+  - BombArea
   layers:
   - Default
   - TransparentFX

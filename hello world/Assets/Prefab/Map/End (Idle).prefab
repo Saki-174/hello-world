@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0e25ee6be724d24b87c00f26623eb55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  victoryPanel: {fileID: 8505688165551222831, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
+  player: {fileID: 1016663077904154903, guid: f7c55c7cb700a7b468acf8ac1b36b7c4, type: 3}
 --- !u!61 &-3966670484872264548
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -38,6 +38,9 @@ public class BombArea : MonoBehaviour
     [Header("要销毁的tag")]
     [SerializeField] string targetTag = "Destoryed";
 
+    [Header("要销毁的tag")]
+    [SerializeField] string myTag = "BombArea";
+
     [Header("爆炸特效预制体（可选）")]
     [SerializeField] GameObject explosionFX;
 
@@ -53,7 +56,7 @@ public class BombArea : MonoBehaviour
         // 1. 生成一个“爆炸检测器”物体
         GameObject detector = new GameObject("ExplosionDetector");
         detector.transform.position = transform.position;
-
+        detector.tag = myTag;
         // 2. 给它一个圆形触发器（大小随意，只要半径够）
         CircleCollider2D c = detector.AddComponent<CircleCollider2D>();
         c.radius = radius;
@@ -68,6 +71,7 @@ public class BombArea : MonoBehaviour
             {
                 Destroy(hit.gameObject);   //炸掉目标
             }
+           
         }
 
         // 4. 爆炸特效（可选）

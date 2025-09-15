@@ -22,12 +22,15 @@ public class PlayerMove : MonoBehaviour
     private float moveController;//存储设置unity提供的预设方式移动    
     private bool isJumping;//人物是否正在跳跃，用于跳跃重力控制和二段跳
     private bool doubleJump;//二段跳
+    private bool airJump;//空跳
     private PlayerDash dash;//获取喷气脚本
     private AudioSource audioSource;
     public List<AudioClip> audioClips = new List<AudioClip>();//音乐列表
+    private Animator animator;//动画
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         dash = GetComponent<PlayerDash>();
     }
@@ -56,7 +59,14 @@ public class PlayerMove : MonoBehaviour
     public void Move()
     {
         moveController = Input.GetAxisRaw("Horizontal");//水平输入移速
-        
+        if (moveController != 0f)
+        {
+            animator.SetBool("IsWalk", true);
+        }
+        else 
+        {
+            animator.SetBool("IsWalk", false);
+        }
         rb.velocity = new Vector2(moveSpeed * moveController, rb.velocity.y);        
     }
     //协程控制短暂的玩家不可控制状态
@@ -75,7 +85,7 @@ public class PlayerMove : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 //wallJumping = true;//设置为正在蹬墙跳
-                rb.velocity = new Vector2(-wallJumpSpeed * transform.localScale.x, wallJumpSpeed);
+                rb.velocity = new Vector2(wallJumpSpeed * transform.localScale.x, wallJumpSpeed);
                 doubleJump = true;//二段跳成立
                 
                 StartCoroutine(WallJumping());//启动协程
@@ -109,12 +119,28 @@ public class PlayerMove : MonoBehaviour
         }
         //松开space
         if (Input.GetKeyUp(KeyCode.Space))
-        {
-           
+        {           
             isJumping = false;//跳跃结束 
+            if (PlayerIsOnGround.isOnGround)
+            {
+                doubleJump = false;//落地时取消可二段跳状
+            }
+        }
+        if (PlayerIsOnGround.isOnGround)
+        {
+            airJump = true;
+        }
+        //空跳
+        if (airJump && Input.GetKeyDown(KeyCode.Space) && !PlayerIsOnGround.isOnGround)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed_2);
+            isJumping = true;//正在跳跃
+            jumpTime = 0;
+            doubleJump = false;
+            airJump = false;
         }
         //二段跳
-        if(doubleJump &&!PlayerIsOnGround.isOnGround && Input.GetKeyDown(KeyCode.Space))
+        if (doubleJump &&!PlayerIsOnGround.isOnGround && Input.GetKeyDown(KeyCode.Space))
         {
             
             rb.velocity = new Vector2(rb.velocity.x, jumpSpeed_2);
@@ -126,9 +152,13 @@ public class PlayerMove : MonoBehaviour
         if (isJumping)
         {
             if(jumpTime <= jumpTimeController)
+            {
                 rb.velocity -= new Vector2(0, Physics2D.gravity.y * Time.deltaTime * upPower);
+            }
             else
+            {
                 isJumping = false ;
+            }
             jumpTime += Time.deltaTime;
         }
         
@@ -144,11 +174,11 @@ public class PlayerMove : MonoBehaviour
     {
         if(rb.velocity.x > 0)
         {
-            transform.localScale = new Vector2(1, 1);
+            transform.localScale = new Vector2(-1, 1);
         }
         if(rb.velocity.x < 0)
         {
-            transform.localScale = new Vector2(-1, 1);
+            transform.localScale = new Vector2(1, 1);
         }
     }
     
