@@ -72,4 +72,16 @@ public class End : MonoBehaviour
         Time.timeScale = 1f;
         isVectory = false;
     }
+    public void RePlay()
+    {
+        audioSource.Stop();
+        index = SceneManager.GetActiveScene().buildIndex;//获取当前场景序号
+        SceneManager.LoadScene(index);
+        Time.timeScale = 1f;
+        isVectory = false;
+    }
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }
