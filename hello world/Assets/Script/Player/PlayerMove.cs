@@ -93,6 +93,7 @@ public class PlayerMove : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 //wallJumping = true;//设置为正在蹬墙跳
+                rb.velocity = new Vector2(wallJumpSpeed * transform.localScale.x, 0);
                 rb.velocity = new Vector2(wallJumpSpeed * transform.localScale.x, wallJumpSpeed);
                 doubleJump = true;//二段跳成立
                 

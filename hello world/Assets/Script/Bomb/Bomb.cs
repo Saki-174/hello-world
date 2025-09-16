@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
+
 public class Bomb : MonoBehaviour
 {
     public Transform player;//获取角色的transform
