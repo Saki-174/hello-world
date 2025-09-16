@@ -14,6 +14,7 @@ public class End : MonoBehaviour
     private int index;//当前场景序号
     public GameObject player;
     private AudioSource audioSource;
+    public List<AudioClip> clipList = new List<AudioClip>();
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +29,9 @@ public class End : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             animator.SetBool("Victory", true);
-            player.GetComponent<Animator>().SetBool("IsVictory", true);
+            player.GetComponent<Animator>().SetBool("IsVictory", true); 
+            audioSource.clip = clipList[0];
+            audioSource.Play();
             isVectory = true;
             StartCoroutine(Good());//使用协程，胜利后一秒呼出胜利面板           
             
@@ -42,26 +45,31 @@ public class End : MonoBehaviour
         {
             gameObjects[0].SetActive(true);
             gameObjects[0].GetComponent<Animator>().SetBool("First",true);
+            audioSource.clip = clipList[1];
+            audioSource.Play();
         }
         yield return new WaitForSeconds(1f); 
         if (s.score > (fullScore / 3) * 2)
         {
             gameObjects[1].SetActive(true);
             gameObjects[1].GetComponent<Animator>().SetBool("Second", true);
+            audioSource.clip = clipList[1];
+            audioSource.Play();
         }
         yield return new WaitForSeconds(1f);
         if (s.score == fullScore)
         {
             gameObjects[2].SetActive(true);
             gameObjects[2].GetComponent<Animator>().SetBool("Third", true);
+            audioSource.clip = clipList[1];
+            audioSource.Play();
         }       
         yield return new WaitForSeconds(2f);
         Time.timeScale = 0f;
     }
     
     public void Victory()
-    {
-        audioSource.Play();
+    {        
         victoryPanel.SetActive(true);
     }
     public void Next()

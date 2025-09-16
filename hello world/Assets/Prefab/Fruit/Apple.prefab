@@ -166,3 +166,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   s: {fileID: 6114569199832676277, guid: d31edc1cb120b2e4b8cb511dc8ada1a4, type: 3}
+  audioSource: {fileID: 0}
