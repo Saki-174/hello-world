@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PausePanelManager : MonoBehaviour
 {
@@ -35,5 +37,11 @@ public class PausePanelManager : MonoBehaviour
     {
         Application.Quit();
     }
-
+    
+    public void Replay()
+    {
+        int index = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(index);
+        Time.timeScale = 1;
+    }
 }
