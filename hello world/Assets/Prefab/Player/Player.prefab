@@ -323,6 +323,8 @@ MonoBehaviour:
   canDash: 1
   isDashing: 0
   clip: {fileID: 8300000, guid: 6d1949d79d81cf243a02d21388507f5f, type: 3}
+  image: {fileID: 0}
+  time: 0
 --- !u!114 &1756849065824113299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,6 +340,7 @@ MonoBehaviour:
   bomb: {fileID: 7624345108884204839, guid: d0160962a60d7b04f84ebc3a139bd418, type: 3}
   playerThrowPoint: {fileID: 4654666492943463537}
   playerThrowSoundClip: {fileID: 8300000, guid: f91ae833923617941a63d3f50f70edeb, type: 3}
+  image: {fileID: 0}
 --- !u!82 &7375532272927132361
 AudioSource:
   m_ObjectHideFlags: 0
@@ -583,7 +586,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.17192373, y: 0.30653608}
