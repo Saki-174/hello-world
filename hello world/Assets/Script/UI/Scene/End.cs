@@ -29,6 +29,7 @@ public class End : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             animator.SetBool("Victory", true);
+            player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;//æ≤Ã¨£¨≤ª»√À˚¬“∂Ø
             player.GetComponent<Animator>().SetBool("IsVictory", true); 
             audioSource.clip = clipList[0];
             audioSource.Play();
@@ -79,6 +80,7 @@ public class End : MonoBehaviour
         SceneManager.LoadScene(index + 1);
         Time.timeScale = 1f;
         isVectory = false;
+        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
     }
     public void RePlay()
     {
@@ -87,6 +89,7 @@ public class End : MonoBehaviour
         SceneManager.LoadScene(index);
         Time.timeScale = 1f;
         isVectory = false;
+        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
     }
     public void Exit()
     {

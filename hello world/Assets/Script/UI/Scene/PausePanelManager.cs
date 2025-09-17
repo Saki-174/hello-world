@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PausePanelManager : MonoBehaviour
 {
-    private bool isPause;//是否暂停
+    public static bool isPause;//是否暂停
     public GameObject pausePanel;//暂停界面获取
     // Update is called once per frame
     void Update()

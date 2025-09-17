@@ -27,10 +27,11 @@ public class PlayerMove : MonoBehaviour
     private AudioSource audioSource;
     public List<AudioClip> audioClips = new List<AudioClip>();//音乐列表
     private Animator animator;//动画
-    public static bool isOnGround;//判断角色是否在地面
+    public static bool isOnGround;//判断角色是否在地面    
     // Start is called before the first frame update
     void Start()
     {
+
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -40,9 +41,9 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dash.isDashing)
+        if (dash.isDashing || End.isVectory || PausePanelManager.isPause)
         {
-            return;//喷气的时候啥也干不了
+            return;//喷气和胜利和暂停的时候啥也干不了
         }
         else
         {
