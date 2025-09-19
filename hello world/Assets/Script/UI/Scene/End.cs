@@ -15,11 +15,14 @@ public class End : MonoBehaviour
     public GameObject player;
     private AudioSource audioSource;
     public List<AudioClip> clipList = new List<AudioClip>();
+    public PlayerData playerData; 
     // Start is called before the first frame update
     void Start()
-    {
+    {       
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        index = SceneManager.GetActiveScene().buildIndex;//获取当前场景序号
+        Debug.Log(index);
     }
 
     // Update is called once per frame
@@ -34,6 +37,10 @@ public class End : MonoBehaviour
             audioSource.clip = clipList[0];
             audioSource.Play();
             isVectory = true;
+            if (index < 4)
+            {
+                playerData.list[index - 1] = true;//存入数据已经通关
+            }
             StartCoroutine(Good());//使用协程，胜利后一秒呼出胜利面板           
             
         }   
@@ -44,6 +51,7 @@ public class End : MonoBehaviour
         Victory();
         if (s.score > fullScore / 3)
         {
+            playerData.ints[index - 2] = 1;
             gameObjects[0].SetActive(true);
             gameObjects[0].GetComponent<Animator>().SetBool("First",true);
             audioSource.clip = clipList[1];
@@ -52,6 +60,7 @@ public class End : MonoBehaviour
         yield return new WaitForSeconds(1f); 
         if (s.score > (fullScore / 3) * 2)
         {
+            playerData.ints[index - 2] = 2;
             gameObjects[1].SetActive(true);
             gameObjects[1].GetComponent<Animator>().SetBool("Second", true);
             audioSource.clip = clipList[1];
@@ -60,6 +69,7 @@ public class End : MonoBehaviour
         yield return new WaitForSeconds(1f);
         if (s.score == fullScore)
         {
+            playerData.ints[index - 2] = 3;
             gameObjects[2].SetActive(true);
             gameObjects[2].GetComponent<Animator>().SetBool("Third", true);
             audioSource.clip = clipList[1];
@@ -75,24 +85,34 @@ public class End : MonoBehaviour
     }
     public void Next()
     {
-        audioSource.Stop();
-        index = SceneManager.GetActiveScene().buildIndex;//获取当前场景序号       
+        audioSource.Stop();       
         SceneManager.LoadScene(index + 1);
         Time.timeScale = 1f;
         isVectory = false;
         player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        playerData.Save();
     }
     public void RePlay()
     {
-        audioSource.Stop();
-        index = SceneManager.GetActiveScene().buildIndex;//获取当前场景序号
+        audioSource.Stop();        
         SceneManager.LoadScene(index);
         Time.timeScale = 1f;
         isVectory = false;
         player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        playerData.Save();
     }
     public void Exit()
     {
         Application.Quit();
+        playerData.Save();
+    }
+    public void BackToMenu()
+    {
+        audioSource.Stop();
+        Time.timeScale = 1f;
+        isVectory = false;
+        player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        playerData.Save();
+        SceneManager.LoadScene(0);
     }
 }

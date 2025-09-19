@@ -43,5 +43,12 @@ public class PausePanelManager : MonoBehaviour
         int index = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(index);
         Time.timeScale = 1;
+        isPause = false;
+    }
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
+        isPause = false;
     }
 }

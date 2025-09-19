@@ -4,13 +4,29 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
+    public List<bool> list = new List<bool> {true , false , false};
+    public List<int> ints = new List<int> { 0 , 0 , 0 };
     //用于存储玩家信息的类，可序列化让其可以转换为json文件
+    private void Start()
+    {
+        Debug.Log(list.Count);
+        Debug.Log(ints.Count);
+    }
     [System.Serializable] class Savedata
     {
-        
+        public List<bool> list = new List<bool>();//记录是否通关
+        public List<int> ints = new List<int>();//记录几颗星
     }
     const string PLAYER_DATA_KEY = "BananaCat";
     const string PLAYER_DATA_FILE_NAME = "BananaCat.sav";
+    //初始化存档，避免他为空
+    public void FirstSave()
+    {
+        Savedata newdata = new Savedata();
+        newdata.list = list;
+        newdata.ints = ints;
+        SaveSystem.SaveByJson(PLAYER_DATA_FILE_NAME, newdata);
+    }
     public void Save()
     {
         SaveByJson();
@@ -32,19 +48,44 @@ public class PlayerData : MonoBehaviour
     }
     Savedata SavingData()
     {
-        var savedata = new Savedata();
-        //Todo:存储数据到savedata里
-
+        Savedata savedata = Check();
+        //存储数据到savedata里
+        savedata.list = list;
+        savedata.ints = ints;
         return savedata;
     }
     private void LoadData(Savedata savedata)
     {
-        //Todo:把savedata里的数据返回来
+        //Todo:把savedata里的数据返回来     
+        list = savedata.list;
+        ints = savedata.ints;       
     }
     //删除数据
     [UnityEditor.MenuItem("Developer/Delete Player Data Prefs")]
     public static void DeletePlayerDataSaveFile()
     {
         SaveSystem.DeleteSaveFile(PLAYER_DATA_FILE_NAME);
+    }
+    Savedata Check()
+    {
+        var savedata = SaveSystem.LoadFromJson<Savedata>(PLAYER_DATA_FILE_NAME);//先把档里的东西读出来看要不要覆盖
+        //Todo:进度高的覆盖
+
+        for (int i = 0; i < savedata.list.Count; i++)
+        {
+            if (savedata.list[i] == true)
+            {
+                list[i] = true;
+            }
+        }
+        for (int i = 0; i < savedata.ints.Count; i++)
+        {
+            if (savedata.ints[i] >= ints[i])
+            {
+                ints[i] = savedata.ints[i];
+            }
+        }
+
+        return savedata;
     }
 }

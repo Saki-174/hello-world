@@ -11222,6 +11222,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5020089331456931264, guid: 86ab6f42a72beac4395f666c06df0afe, type: 3}
   m_PrefabInstance: {fileID: 1699691554}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1882746156 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 383788059189430404, guid: 6cfae284f6390974d8e8ed3e77e48d9c, type: 3}
+  m_PrefabInstance: {fileID: 7608078758818143179}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953cb16ac731a9746931cceaee73da8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2058539311
 GameObject:
   m_ObjectHideFlags: 0
@@ -11518,6 +11529,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1086481713}
     m_Modifications:
+    - target: {fileID: 1251916263824001266, guid: ea5cab92117813f4c8b7997a6062e8f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1365755438}
+    - target: {fileID: 1251916263824001266, guid: ea5cab92117813f4c8b7997a6062e8f2, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 2738205087188578451, guid: ea5cab92117813f4c8b7997a6062e8f2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -11703,7 +11722,7 @@ PrefabInstance:
       objectReference: {fileID: 305222140}
     - target: {fileID: 396755069389179906, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Exit
+      value: BackToMenu
       objectReference: {fileID: 0}
     - target: {fileID: 396755069389179906, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -11808,6 +11827,22 @@ PrefabInstance:
     - target: {fileID: 3505393752169571866, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099474727449826468, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 305222140}
+    - target: {fileID: 5099474727449826468, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Exit
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099474727449826468, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: End, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5099474727449826468, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5916372915235839730, guid: cb47dca005c6d204f8070090781ccb59, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -11918,6 +11953,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2089483407}
     - target: {fileID: 7481583393074324723, guid: 88a4dae43c8ef3d42ba490fd822cb8b8, type: 3}
+      propertyPath: playerData
+      value: 
+      objectReference: {fileID: 1882746156}
+    - target: {fileID: 7481583393074324723, guid: 88a4dae43c8ef3d42ba490fd822cb8b8, type: 3}
       propertyPath: victoryPanel
       value: 
       objectReference: {fileID: 2070981678}
@@ -12007,7 +12046,8 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
