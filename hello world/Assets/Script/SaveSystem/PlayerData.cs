@@ -7,11 +7,7 @@ public class PlayerData : MonoBehaviour
     public List<bool> list = new List<bool> {true , false , false};
     public List<int> ints = new List<int> { 0 , 0 , 0 };
     //用于存储玩家信息的类，可序列化让其可以转换为json文件
-    private void Start()
-    {
-        Debug.Log(list.Count);
-        Debug.Log(ints.Count);
-    }
+   
     [System.Serializable] class Savedata
     {
         public List<bool> list = new List<bool>();//记录是否通关

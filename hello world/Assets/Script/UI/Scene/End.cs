@@ -109,10 +109,10 @@ public class End : MonoBehaviour
     public void BackToMenu()
     {
         audioSource.Stop();
+        SceneManager.LoadScene(0);
         Time.timeScale = 1f;
         isVectory = false;
         player.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         playerData.Save();
-        SceneManager.LoadScene(0);
     }
 }
