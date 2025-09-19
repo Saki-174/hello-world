@@ -840,6 +840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   list: 010000
   ints: 000000000000000000000000
+  haveData: 0
 --- !u!1 &998258475
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,6 +945,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc717bb72244e0d4f805d469762a03af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData: {fileID: 987387922}
+  gameButton: {fileID: 1216870118}
 --- !u!4 &1177911489
 Transform:
   m_ObjectHideFlags: 0

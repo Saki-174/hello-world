@@ -6,12 +6,14 @@ public class PlayerData : MonoBehaviour
 {
     public List<bool> list = new List<bool> {true , false , false};
     public List<int> ints = new List<int> { 0 , 0 , 0 };
+    public bool haveData = false;
     //用于存储玩家信息的类，可序列化让其可以转换为json文件
    
     [System.Serializable] class Savedata
     {
         public List<bool> list = new List<bool>();//记录是否通关
         public List<int> ints = new List<int>();//记录几颗星
+        public bool haveData;//记录是否有存档
     }
     const string PLAYER_DATA_KEY = "BananaCat";
     const string PLAYER_DATA_FILE_NAME = "BananaCat.sav";
@@ -21,6 +23,7 @@ public class PlayerData : MonoBehaviour
         Savedata newdata = new Savedata();
         newdata.list = list;
         newdata.ints = ints;
+        newdata.haveData = true;
         SaveSystem.SaveByJson(PLAYER_DATA_FILE_NAME, newdata);
     }
     public void Save()
@@ -48,13 +51,15 @@ public class PlayerData : MonoBehaviour
         //存储数据到savedata里
         savedata.list = list;
         savedata.ints = ints;
+        savedata.haveData = haveData;
         return savedata;
     }
     private void LoadData(Savedata savedata)
     {
         //Todo:把savedata里的数据返回来     
         list = savedata.list;
-        ints = savedata.ints;       
+        ints = savedata.ints;  
+        haveData = savedata.haveData;
     }
     //删除数据
     [UnityEditor.MenuItem("Developer/Delete Player Data Prefs")]
@@ -81,6 +86,11 @@ public class PlayerData : MonoBehaviour
                 ints[i] = savedata.ints[i];
             }
         }
+        if( savedata.haveData)
+        {
+            haveData = savedata.haveData;
+        }
+
 
         return savedata;
     }
