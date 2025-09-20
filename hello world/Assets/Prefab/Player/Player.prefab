@@ -182,6 +182,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 50127ed78baf76e44aebb78bcbcf9b51, type: 3}
   - {fileID: 8300000, guid: 006ef147e85b95c4b8cd9c9167d99682, type: 3}
   - {fileID: 8300000, guid: e27a823d4f0237d4285bc9e3e537ee18, type: 3}
+  isOnGround: 0
+  playerIsOnWall: {fileID: 8163022559570941836}
 --- !u!114 &4292000981789502004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,7 +539,7 @@ GameObject:
   - component: {fileID: 8163022559570941836}
   m_Layer: 0
   m_Name: IsOnWall
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -604,3 +606,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16a247497cae6c43aedfc50b1d4160b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnWall: 0

@@ -21,7 +21,7 @@ public class Bomb : MonoBehaviour
     {   
         
         audioSource = GetComponent<AudioSource>();
-        player = GameObject.Find("Player").GetComponent<Transform>();
+        player = GameObject.FindWithTag("Player").GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(-player.localScale.x * startSpeed_x, startSpeed_y);  
         audioSource.Play();
@@ -38,7 +38,7 @@ public class Bomb : MonoBehaviour
     //碰到黏住
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Player"))
+        if (!collision.CompareTag("Player") && !collision.CompareTag("IsOnWall"))
         {            
             Destroy(rb);//去掉物体的刚体
             IsStuck = true;

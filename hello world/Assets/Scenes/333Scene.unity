@@ -13825,6 +13825,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 379945536395596969, guid: f7c55c7cb700a7b468acf8ac1b36b7c4, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 379945536395596969, guid: f7c55c7cb700a7b468acf8ac1b36b7c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.2
       objectReference: {fileID: 0}
@@ -13880,6 +13884,10 @@ PrefabInstance:
       propertyPath: image
       value: 
       objectReference: {fileID: 738781555}
+    - target: {fileID: 7173528628190203920, guid: f7c55c7cb700a7b468acf8ac1b36b7c4, type: 3}
+      propertyPath: m_TagString
+      value: IsOnWall
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1783909643280394592, guid: f7c55c7cb700a7b468acf8ac1b36b7c4, type: 3}
     m_RemovedGameObjects: []

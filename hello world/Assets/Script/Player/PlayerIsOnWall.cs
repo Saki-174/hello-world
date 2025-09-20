@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerIsOnWall : MonoBehaviour
 {
     //判断角色是否在墙上
-    public static bool isOnWall;
+    public bool isOnWall;
     
     private void OnTriggerEnter2D(Collider2D collision)
     {

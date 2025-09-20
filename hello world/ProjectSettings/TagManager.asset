@@ -11,6 +11,8 @@ TagManager:
   - Destoryed
   - Bomb
   - BombArea
+  - Bullet
+  - IsOnWall
   layers:
   - Default
   - TransparentFX

@@ -27,7 +27,8 @@ public class PlayerMove : MonoBehaviour
     private AudioSource audioSource;
     public List<AudioClip> audioClips = new List<AudioClip>();//音乐列表
     private Animator animator;//动画
-    public static bool isOnGround;//判断角色是否在地面    
+    public bool isOnGround;//判断角色是否在地面    
+    public PlayerIsOnWall playerIsOnWall;
     // Start is called before the first frame update
     void Start()
     {
@@ -88,7 +89,7 @@ public class PlayerMove : MonoBehaviour
     //控制玩家在墙上的跳跃
     private void WallJump()
     {
-        if (PlayerIsOnWall.isOnWall && ! isOnGround)
+        if (playerIsOnWall.isOnWall && ! isOnGround)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.8f);
             if (Input.GetKeyDown(KeyCode.Space))
