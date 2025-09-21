@@ -39,7 +39,7 @@ public static class SaveSystem
         catch (System.Exception exception)
         {
             #if UNITY_EDITOR
-            Debug.LogError($"Fail to load data to {path}. \n{exception}");
+            Debug.LogWarning($"Fail to load data to {path}. \n{exception}");
             #endif
             return default;
         }

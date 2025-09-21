@@ -29,6 +29,7 @@ public class MenuScene : MonoBehaviour
     {
         panel_2.SetActive(false);
         panel_1.SetActive(true);
+        
         playerData.Load();
         if(playerData.haveData == false)
         {

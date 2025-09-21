@@ -9,10 +9,10 @@ public class PlayerData : MonoBehaviour
     public bool haveData = false;
     //用于存储玩家信息的类，可序列化让其可以转换为json文件
    
-    [System.Serializable] class Savedata
+    [System.Serializable] public class Savedata
     {
-        public List<bool> list = new List<bool>();//记录是否通关
-        public List<int> ints = new List<int>();//记录几颗星
+        public List<bool> list = new List<bool>() { true, false, false };//记录是否通关
+        public List<int> ints = new List<int>() { 0, 0, 0 };//记录几颗星
         public bool haveData;//记录是否有存档
     }
     const string PLAYER_DATA_KEY = "BananaCat";
@@ -43,6 +43,10 @@ public class PlayerData : MonoBehaviour
     private void LoadFromJson()
     {
         var savedata = SaveSystem.LoadFromJson<Savedata>(PLAYER_DATA_FILE_NAME);
+        if(savedata == null)
+        {
+            savedata = new Savedata();
+        }
         LoadData(savedata);
     }
     Savedata SavingData()
