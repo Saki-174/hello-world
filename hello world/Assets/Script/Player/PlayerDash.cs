@@ -44,8 +44,9 @@ public class PlayerDash : MonoBehaviour
             if(rb == null)return ;
         }
        
-        if (sceneIndex <= 1)
+        if (sceneIndex <= 2)
         {
+
             canDash = false;//还没解锁喷气的时候不能用
         }
         

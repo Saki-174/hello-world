@@ -9,6 +9,7 @@ public class PlayerDead : MonoBehaviour
     private Animator animator;
     private AudioSource audioSource;
     public AudioClip audioClip;
+    public Dead d;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,8 +31,7 @@ public class PlayerDead : MonoBehaviour
     {   
         audioSource.clip = audioClip;
         if (!audioSource.isPlaying)
-        {
-            
+        {          
             audioSource.Play();
         }
         rb.bodyType = RigidbodyType2D.Static;//把角色转换为静态
@@ -44,5 +44,6 @@ public class PlayerDead : MonoBehaviour
         animator.SetBool("IsDead", false);
         gameObject.transform.position = PlayerSaveFlie.trans;       
         rb.bodyType = RigidbodyType2D.Dynamic;//把角色转换为动态
+        d.dead += 1;
     }
 }

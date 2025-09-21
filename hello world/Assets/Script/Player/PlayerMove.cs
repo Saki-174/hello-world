@@ -83,7 +83,9 @@ public class PlayerMove : MonoBehaviour
     IEnumerator WallJumping()
     {
         wallJumping = true;
-        yield return new WaitForSeconds(0.15f);//等待0.15秒后可以控制玩家移动（蹬墙跳结束）
+        yield return new WaitForSeconds(0.01f);
+        rb.velocity = new Vector2(-wallJumpSpeed * transform.localScale.x, wallJumpSpeed);//向上跳跃
+        yield return new WaitForSeconds(0.13f);//等待0.15秒后可以控制玩家移动（蹬墙跳结束）
         wallJumping = false;
     }
     //控制玩家在墙上的跳跃
@@ -95,8 +97,7 @@ public class PlayerMove : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 //wallJumping = true;//设置为正在蹬墙跳
-                rb.velocity = new Vector2(wallJumpSpeed * transform.localScale.x, 0);
-                rb.velocity = new Vector2(wallJumpSpeed * transform.localScale.x, wallJumpSpeed);
+                rb.velocity = new Vector2(wallJumpSpeed * transform.localScale.x, 0);//从墙上出来                                                         
                 doubleJump = true;//二段跳成立
                 
                 StartCoroutine(WallJumping());//启动协程
