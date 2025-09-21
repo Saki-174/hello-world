@@ -66,7 +66,7 @@ public class PlayerData : MonoBehaviour
         haveData = savedata.haveData;
     }
     //É¾³ýÊý¾Ý
-    [UnityEditor.MenuItem("Developer/Delete Player Data Prefs")]
+    //[UnityEditor.MenuItem("Developer/Delete Player Data Prefs")]
     public static void DeletePlayerDataSaveFile()
     {
         SaveSystem.DeleteSaveFile(PLAYER_DATA_FILE_NAME);

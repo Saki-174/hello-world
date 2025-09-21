@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClip: {fileID: 8300000, guid: 7fc89c174b8ee784ea1827c4e11f0d70, type: 3}
+  d: {fileID: 0}
 --- !u!96 &4655057981633228316
 TrailRenderer:
   serializedVersion: 3

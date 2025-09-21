@@ -24,4 +24,9 @@ public class NetWorkLauncher : MonoBehaviourPunCallbacks
         base.OnJoinedRoom();
         PhotonNetwork.Instantiate("Player",trans.position, Quaternion.identity);
     }
+    public void Leave()
+    {
+        PhotonNetwork.Disconnect();
+    }
+    
 }

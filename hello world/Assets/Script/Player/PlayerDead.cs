@@ -44,6 +44,13 @@ public class PlayerDead : MonoBehaviour
         animator.SetBool("IsDead", false);
         gameObject.transform.position = PlayerSaveFlie.trans;       
         rb.bodyType = RigidbodyType2D.Dynamic;//把角色转换为动态
-        d.dead += 1;
+        if(d == null)
+        {
+
+        }
+        else
+        {
+            d.dead += 1;
+        }
     }
 }
