@@ -20,9 +20,7 @@ public class PlayerData : MonoBehaviour
     //初始化存档，避免他为空
     public void FirstSave()
     {
-        Savedata newdata = new Savedata();
-        newdata.list = list;
-        newdata.ints = ints;
+        Savedata newdata = new Savedata();     
         newdata.haveData = true;
         SaveSystem.SaveByJson(PLAYER_DATA_FILE_NAME, newdata);
     }
@@ -66,10 +64,11 @@ public class PlayerData : MonoBehaviour
         haveData = savedata.haveData;
     }
     //删除数据
-    //[UnityEditor.MenuItem("Developer/Delete Player Data Prefs")]
+    [UnityEditor.MenuItem("Developer/Delete Player Data Prefs")]
     public static void DeletePlayerDataSaveFile()
     {
         SaveSystem.DeleteSaveFile(PLAYER_DATA_FILE_NAME);
+        Debug.Log("success");
     }
     Savedata Check()
     {

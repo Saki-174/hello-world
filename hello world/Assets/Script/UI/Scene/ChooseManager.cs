@@ -16,13 +16,17 @@ public class ChooseManager : MonoBehaviour
     public List<Raw> raw = new List<Raw>();
     public PlayerData playerData;//获取存档
 
+    
     private void Start()
     {      
-        playerData.Load();
         ButtonAddListener();
+        
+        playerData.Load();
         Level();
         Star();
     }
+
+
     //关卡解锁
     private void Level()
     {

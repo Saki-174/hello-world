@@ -101,7 +101,9 @@ GameObject:
   - component: {fileID: 8027994408280098562}
   - component: {fileID: 778528364483312510}
   - component: {fileID: 1336414256817509227}
-  - component: {fileID: 9174771187469000023}
+  - component: {fileID: -1944097303160877889}
+  - component: {fileID: 2848855777639712236}
+  - component: {fileID: 8650846457804533381}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -576,7 +578,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -1}
   m_Size: {x: 0.57, y: 0.04}
   m_Direction: 1
---- !u!114 &9174771187469000023
+--- !u!114 &-1944097303160877889
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -593,11 +595,56 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 3
   OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents: []
+  observableSearch: 0
+  ObservedComponents:
+  - {fileID: 2848855777639712236}
+  - {fileID: 8650846457804533381}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &2848855777639712236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398795331532266604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 0
+  m_SynchronizeScale: 1
+  m_UseLocal: 1
+--- !u!114 &8650846457804533381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4398795331532266604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 2
+    Name: IsWalk
+  - Type: 4
+    SynchronizeType: 2
+    Name: IsDead
+  - Type: 4
+    SynchronizeType: 2
+    Name: IsVictory
+  m_SynchronizeLayers:
+  - SynchronizeType: 2
+    LayerIndex: 0
 --- !u!1 &8188648450550665992
 GameObject:
   m_ObjectHideFlags: 0

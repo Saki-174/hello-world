@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 public class NetPlayerBomb : MonoBehaviourPun
 {
     public GameObject bomb;
@@ -36,7 +37,7 @@ public class NetPlayerBomb : MonoBehaviourPun
         {
             playerThrowSound.clip = playerThrowSoundClip;
             playerThrowSound.Play();
-            Instantiate(bomb, playerThrowPoint.transform.position, Quaternion.identity);
+            PhotonNetwork.Instantiate("bomb", playerThrowPoint.transform.position, Quaternion.identity);
             //image.fillAmount = 1f;
             bombTime = 0;
             while (bombTime < bombCooldown)
